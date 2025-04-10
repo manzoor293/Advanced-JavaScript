@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Event</title>
+    <style>
+      button {
+        color: #000;
+        background-color: yellow;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <h1>Inline Event</h1>
+      <button id="mybtn1">greating</button>
+      <button>greating again</button>
+      <button>greating</button>
+    </div>
+    <div>
+      <h1>Dom Event handler</h1>
+      <button id="mybtn2">greating</button>
+      <button>greating again</button>
+    </div>
+    <div>
+      <h1>addEvenListner handler</h1>
+      <button id="mybtn3">greating</button>
+      <button>greating again</button>
+    </div>
+    <script>
+      document.getElementById("mybtn1").onclick = function () {
+        alert("To the world best");
+      };
+
+      // document.getElementById("mybtn2").onmouseover = function () {
+      //   alert("This is 2nd div elment");
+      // };
+
+      //
+      document.getElementById("mybtn2").addEventListener("mouseover", () => {
+        alert("This is 2nd div elment");
+      });
+
+      document.getElementById("mybtn3").addEventListener("click", function () {
+        alert("This is 3rd div");
+      });
+    </script>
+  </body>
+</html>

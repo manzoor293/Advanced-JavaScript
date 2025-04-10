@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mouse Event Example</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      section {
+        text-align: center;
+      }
+      .rectangle {
+        width: 20rem;
+        height: 20rem;
+        background-color: #000;
+        border-radius: 1rem;
+        margin-bottom: 3.2rem;
+        transition: all 0.6s linear;
+        box-shadow: rgb(239, 247, 87, 0.2) 0px 8px 24px;
+      }
+      button {
+        color: #000;
+        background-color: yellow;
+        border-radius: 10px;
+      }
+      .addTransition {
+        border-radius: 50%;
+      }
+      .addTransition3 {
+        border-radius: 50%;
+        background-color: #f5ee62;
+        translate: -30rem 0;
+      }
+      .addTransition4 {
+        border-radius: 50%;
+        background-color: #6271f5;
+        translate: -30rem 0;
+      }
+      .addTransition5 {
+        border-radius: 50%;
+        background-color: #f5ee62;
+        translate: 30rem 0;
+      }
+      .addTransition6 {
+        border-radius: 0%;
+        background-color: #f5ee62;
+        translate: 0rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="rectangle"></div>
+      <button id="myButton">Click me</button>
+    </section>
+
+    <script>
+      // Gets Elements Byid
+      let myButton = document.getElementById("myButton");
+      let recDiv = document.querySelector(".rectangle");
+
+      const handleMouseEvents = () => {
+        console.log("click me");
+        recDiv.style.backgroundColor = "#f5ee62";
+      };
+
+      const handleMouseEvents2 = () => {
+        console.log("doubleclick");
+        recDiv.classList.add("addTransition");
+      };
+
+      const handleMouseEvents3 = () => {
+        console.log("doubleclick");
+        recDiv.classList.add("addTransition3");
+      };
+
+      const handleMouseEvents4 = () => {
+        recDiv.classList.add("addTransition4");
+      };
+
+      const handleMouseEvents5 = () => {
+        recDiv.classList.add("addTransition5");
+      };
+
+      const handleMouseEvents6 = () => {
+        recDiv.classList.add("addTransition6");
+      };
+      // todo- Show them css animation part
+
+      // Attach the handleClick function to the click Event of the button
+
+      myButton.addEventListener("click", handleMouseEvents);
+      //or use when some parameter pass
+      // myButton.addEventListener("click", (e) => {
+      //   handleMouseEvents(e.target);
+      // });
+
+      myButton.addEventListener("dblclick", handleMouseEvents2);
+      recDiv.addEventListener("mouseover", handleMouseEvents3);
+      recDiv.addEventListener("mouseout", handleMouseEvents4);
+      recDiv.addEventListener("mousedown", handleMouseEvents5);
+      recDiv.addEventListener("mouseup", handleMouseEvents6);
+    </script>
+  </body>
+</html>

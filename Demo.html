@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript</title>
+  </head>
+  <body>
+    <h1>Best Js Course</h1>
+    <p>Understanding The DOM Tree Structue</p>
+    <hr />
+    <p>It's easy. Help JS to communicate with HTML.</p>
+    <script>
+      let parent = document;
+      let bodyElement = document.body;
+      // let bodyChild = bodyElement.childNodes;
+      let bodyChild = bodyElement.children;
+      let firstChild = bodyElement.firstElementChild;
+      let lastChild = bodyElement.lastChild;
+
+      let nextChild = firstChild.nextElementSibling;
+      let previousSibling = nextChild.previousElementSibling;
+
+      let Parent = previousSibling.parentNode;
+      console.log(Parent);
+    </script>
+  </body>
+</html>

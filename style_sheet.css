@@ -1,0 +1,11 @@
+body{
+  height: 100vh;
+  display:flex;
+  color:white;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+}
+p{
+  font-size:10rem;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input-Event</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10rem;
+        background-color: #000;
+      }
+      input {
+        color: #000;
+        background-color: white;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        padding: 2px;
+        width: 20rem;
+        height: 2rem;
+      }
+      .out {
+        background-color: rgb(90, 82, 82);
+        width: 20rem;
+        padding: 2px;
+        border-left: 3px solid white;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+      .inputValue,
+      .inputName,
+      .eventType {
+        color: white;
+        /* font-weight: bold; */
+        font-size: large;
+        margin-left: 10px;
+      }
+      .inputValue,
+      .inputName {
+        margin-bottom: 30px;
+      }
+      .inputType {
+        color: #f5ee62;
+        margin-bottom: 30px;
+        font-size: large;
+        /* font-weight: bold; */
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <input
+        type="text"
+        name="username"
+        id="myInput"
+        placeholder="Type Something..."
+      />
+      <div class="out">
+        <p class="inputValue">Input Value:</p>
+        <p class="inputName">Input name:</p>
+        <p class="inputType">Input type:</p>
+        <p class="eventType">Event type:</p>
+      </div>
+    </section>
+
+    <script>
+      const handInput = (event) => {
+        console.log(event);
+
+        // Display the information about the key boared Event
+
+        console.log("Input Value:", event.target.value);
+        console.log("Input name:", event.target.name);
+        console.log("Input type:", event.inputType);
+        console.log("Event type:", event.type);
+
+        document.querySelector(
+          ".inputValue"
+        ).textContent = `Input Value: ${event.target.value}`;
+
+        document.querySelector(
+          ".inputName"
+        ).textContent = `Input Name: ${event.target.name}`;
+
+        document.querySelector(
+          ".inputType"
+        ).textContent = `Input Type: ${event.inputType}`;
+
+        document.querySelector(
+          ".eventType"
+        ).textContent = `Event Type: ${event.type}`;
+      };
+
+      // Get Element By id
+      var inputElem = document.getElementById("myInput");
+
+      // inputElem.addEventListener("input", handInput);
+      inputElem.addEventListener("change", handInput);
+    </script>
+  </body>
+</html>

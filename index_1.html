@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document-1</title>
+    <style>
+      body {
+        margin: 0 auto;
+        padding: 0 auto;
+        background-color: gray;
+      }
+      section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        font-weight: bold;
+        margin: 20% 2%;
+        padding: 0.6rem;
+        align-content: space-between;
+        border-radius: 15px;
+      }
+      #addBtn {
+        color: #000;
+        background-color: rgb(228, 228, 30);
+      }
+      #getBtn {
+        color: #000;
+        background-color: rgb(43, 184, 137);
+      }
+      #removeBtn {
+        color: #000;
+        background-color: rgb(170, 60, 60);
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <button id="addBtn">Add Data to localStorage</button>
+      <button id="getBtn">Get Data to localStorage</button>
+      <button id="removeBtn">Remove Data to localStorage</button>
+    </section>
+    <script>
+      const studentBioData = {
+        firstName: "Manzoor",
+        lasName: "Ahmad",
+        age: 20,
+        gender: "male",
+        grade: "A",
+        courses: ["Math", "Science", "English"],
+        address: {
+          street: "123 Main St",
+          city: "Mardan",
+          state: "Pakistan",
+          zipcode: "12345",
+        },
+      };
+
+      const addTodoList = () => {
+        localStorage.setItem("objectData", JSON.stringify(studentBioData));
+      };
+
+      const getTodoList = () => {
+        const retrievedStudentData = JSON.parse(
+          localStorage.getItem("objectData")
+        );
+        console.log("Retrieved data from LocalStorage: ", retrievedStudentData);
+      };
+      const removeTodoList = () => {
+        const removeData = localStorage.removeItem("objectData");
+        console.log("Data after removel:", removeData);
+      };
+
+      document.getElementById("addBtn").addEventListener("click", () => {
+        addTodoList();
+      });
+      document.getElementById("getBtn").addEventListener("click", () => {
+        getTodoList();
+      });
+      document.getElementById("removeBtn").addEventListener("click", () => {
+        removeTodoList();
+      });
+    </script>
+  </body>
+</html>
