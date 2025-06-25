@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      button {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome to Dad Jokes!</h1>
+      <section class="api_body"></section>
+      <button id="fetchJoke">Get Another Joke</button>
+    </div>
+
+    <script>
+      const api_body = document.querySelector(".api_body");
+      // const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+      const apiUrl = "https://icanhazdadjoke.co m/";
+
+      const fetchData = () => {
+        const response = fetch(apiUrl, {
+          headers: {
+            Accept: "application/json",
+          },
+        })
+          .then((res) => {
+            console.log(res);
+            return res.json();
+          })
+          .then((data) => {
+            console.log(data.joke);
+            api_body.innerHTML = data.joke;
+          })
+          .catch((error) => {
+            api_body.innerHTML = `Api is not Working!`;
+
+            console.log("I am sorry!");
+          });
+      };
+      // add event listener to fetch a new joke when a button is clicked
+      document.getElementById("fetchJoke").addEventListener("click", fetchData);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+<!-----async and await are javascript keyword introduced in Ecmascript 2017 (ES8) that 
+make asynchronous code look and behave more like synchronous code, making it easier
+to write, read, and reasons about asynchronous operations.-->
+
+<!-----? async Function  Declaration: The async keyword is used to declare an asynchronous functions
+An asynchronous function return a Promise implicitly, even if the return value is not 
+explicitly wrapped in a promise. Inside an asynchronous function, you can use the 
+await keyword to pause the execution of code until a Promise is resolved or rejected.
+-->
+
+<!-----? await Operation: The await keyword is used to pause the execution of an async
+function until a Promise is Settled(resolved or rejected). It can only be used inside 
+an async function. When await is used with a Promise. It waits for the Promise to 
+resolve and return the resolved value. If the Promise is rejected, it throw an error
+that can be caught using a try...catch block.-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async-await,Dad Joke</title>
+  
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+          }
+
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+
+          h1 {
+            text-align: center;
+          }
+
+          button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+          }
+
+          button:hover {
+            background: #0056b3;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Welcome to Dad Jokes!</h1>
+          <section class="api_body"></section>
+          <button id="fetchJoke">Get Another Joke</button>
+        </div>
+
+        <script>
+          const api_body = document.querySelector(".api_body");
+          // const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+          const apiUrl = "https://icanhazdadjoke.com/";
+
+          async function fetchData() {
+            const response = await fetch(apiUrl, {
+              headers: {
+                Accept: "application/json",
+              },
+            });
+            const data = await response.json();
+            console.log(data.joke);
+            api_body.innerHTML = data.joke;
+          }
+
+          // add event listener to fetch a new joke when a button is clicked
+          document
+            .getElementById("fetchJoke")
+            .addEventListener("click", fetchData);
+        </script>
+      </body>
+    </html>
+  </body>
+</html>

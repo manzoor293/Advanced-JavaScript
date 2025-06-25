@@ -1,0 +1,109 @@
+<!--In javaScript, The try....catch statements is used for error handling. It
+allows you to catch and handle exceptions (errors) that occur within a
+block of code. Here how it works: -->
+
+<!----? try Block: The try block contains the code that you want to execute. It is the 
+block of code where you anticipant that an error might occur.-->
+
+<!----? catch Block: The catch block follow the try block and is used to catch any 
+exceptions(errors) that occurs within the try block. If an exception occur, 
+javascript jumps to the catch block to handle the error. The catch block take an 
+error object as a parameter, which can be used to access information about the error,
+such as its message or stack trace.-->
+
+<!-----? finally Block(Optional): The finally block, if provided, is executed
+regardless of wether an error occur or not. It is typically used for cleanup tasks
+that should always be performed, such as closing resources or releasing locks.-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async-await,Dad Joke</title>
+  
+        <style>
+          body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+          }
+
+          .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background:rgb(151, 151, 38);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          }
+
+          h1 {
+            text-align: center;
+          }
+
+          button {
+            display: block;
+            width: 50%;
+            padding: 10px;
+            background: #007bff;
+            color: #fff;
+            /* border: none; */
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 0 auto;
+
+          }
+          .api_body {
+            text-align: center;
+            font-size: 1.2em;
+            color: #000;
+            margin: 20px;
+          }
+
+          button:hover {
+            background: #0056b3;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>Welcome to Dad Jokes!</h1>
+          <section class="api_body"></section>
+          <button id="fetchJoke">Get Another Joke</button>
+        </div>
+
+        <script>
+          const api_body = document.querySelector(".api_body");
+          // const apiUrl = "https://jsonplaceholder.typicode.com/posts/1";
+          const apiUrl = "https://icanhazdadjoke.om/";
+
+          // async function fetchData() {
+          const fetchData= async ()=>{  //asynchronous Fat Arrow function
+            try{
+                const response = await fetch(apiUrl, {
+                headers: {
+                  Accept: "application/json",
+                },
+              });
+              const data = await response.json();
+              console.log(data.joke);
+              api_body.innerHTML = data.joke;
+            }catch(error){
+              api_body.innerText=error;
+              console.log(error);
+            }
+            
+          }
+
+          // add event listener to fetch a new joke when a button is clicked
+          document
+            .getElementById("fetchJoke")
+            .addEventListener("click", fetchData);
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
